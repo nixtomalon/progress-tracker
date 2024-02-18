@@ -27,7 +27,7 @@ Open Source and Community-Driven:
 
 Open source nature that encourages community contributions, fostering collaboration and improvement over time.
 
-## Getting started
+## Installation
 
 1. Add the latest version of package to your pucspec.yaml (and run dart pub get):
 ```shell
