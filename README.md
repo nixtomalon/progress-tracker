@@ -15,16 +15,13 @@ and the Flutter guide for
 
 ## Features
 
-Progress Tracking Widgets:
-
+#Progress Tracking Widgets:
 Easy-to-use widgets for visualizing and tracking progress within your Flutter application.
 
-User-Friendly Components:
-
+#User-Friendly Components:
 User-friendly components for indicating status, completion, or progression in various scenarios.
 
-Open Source and Community-Driven:
-
+#Open Source and Community-Driven:
 Open source nature that encourages community contributions, fostering collaboration and improvement over time.
 
 ## Installation
