@@ -11,6 +11,8 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
+## progress_tracker
+
  A versatile and easy-to-use Flutter package for implementing progress tracking and status visualization in your applications.
 
 ## Features
@@ -24,19 +26,25 @@ User-friendly components for indicating status, completion, or progression in va
 **Open Source and Community-Driven**:
 Open source nature that encourages community contributions, fostering collaboration and improvement over time.
 
-## Installation
+<img src="https://github.com/nixtomalon/progress_tracker/blob/main/assets/pt-sample.gif" width="260" />
 
-1. Add the latest version of package to your pucspec.yaml (and run dart pub get):
-```shell
+## How to use?
+
+**1.** Add the latest version of package to your pucspec.yaml:
+```yaml
 dependencies:
   progress_tracker: ^0.0.1
 ```
-2. Import the package and use it in your Flutter App.
-```shell
+**2.** Install packages from the comman line: 
+```bash
+$ flutter pub get
+```
+**3.** Import the package and use it in your Flutter App.
+```dart
 import 'package:progress_tracker/progress_tracker.dart';
 ```
 
-## Usage
+## Example
 
 ```dart
 import 'package:flutter/material.dart';
