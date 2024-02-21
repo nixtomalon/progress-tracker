@@ -14,8 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final List<ProgressStatus> progressStatuses = [
-    ProgressStatus(
-        name: 'ORDER', icon: Icons.shopping_bag, isActiveStatus: true),
+    ProgressStatus(name: 'ORDER', icon: Icons.shopping_bag),
     ProgressStatus(name: 'SHIP', icon: Icons.local_shipping),
     ProgressStatus(name: 'DONE', icon: Icons.check_circle),
   ];

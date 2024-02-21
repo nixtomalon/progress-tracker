@@ -17,6 +17,10 @@ class ProgressTracker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (!progressStatuses[0].isActiveStatus!) {
+      progressStatuses[0].isActiveStatus = true;
+    }
+
     return LayoutBuilder(builder: (_, BoxConstraints box) {
       final count = (box.constrainWidth() / (1.4 * 8.0)).floor();
 
