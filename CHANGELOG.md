@@ -1,3 +1,8 @@
+## [0.0.7] - 2024-02-22
+
+* update License
+* added comments in package code
+
 ## [0.0.6] - 2024-02-22
 
 * Added comments in Quick Example
