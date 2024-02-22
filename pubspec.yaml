@@ -1,6 +1,6 @@
 name: progress_tracker
 description: A versatile and easy-to-use Flutter package for implementing progress tracking and status visualization in your applications.
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/nixtomalon/progress_tracker
 repository: https://github.com/nixtomalon/progress_tracker
 
@@ -16,6 +16,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^2.0.0
 
 
 # For information on the generic Dart part of this file, see the
