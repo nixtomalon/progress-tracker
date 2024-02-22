@@ -1,3 +1,7 @@
+## [0.0.5] - 2024-02-22
+
+* Update Quick Example
+
 ## [0.0.4] - 2024-02-22
 
 * Fix issue in list of status
