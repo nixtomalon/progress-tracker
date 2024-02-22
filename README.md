@@ -33,7 +33,7 @@ Open source nature that encourages community contributions, fostering collaborat
 **1.** Add the latest version of package to your pucspec.yaml:
 ```yaml
 dependencies:
-  progress_tracker: ^0.0.2
+  progress_tracker: ^0.0.4
 ```
 **2.** Install packages from the comman line: 
 ```bash

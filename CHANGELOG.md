@@ -1,3 +1,7 @@
+## [0.0.4]
+
+* Fix issue in list of status
+
 ## [0.0.3]
 
 * Fix minor issue
