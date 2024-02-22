@@ -18,20 +18,26 @@ class ProgressTracker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     for (int i = 0; i < statusList.length; i++) {
-      if (i == 0)
+      if (i == 0) {
         statusList[i].active = true;
-      else if (statusList[i].active!) statusList[i].active = i <= currentIndex;
+      } else {
+        if (statusList[i].active!) {
+          statusList[i].active = i <= currentIndex;
+        }
+      }
     }
 
     return LayoutBuilder(builder: (_, BoxConstraints box) {
       final count = (box.constrainWidth() / (1.4 * 8.0)).floor();
 
-      return Container(
+      return SizedBox(
         height: 82,
         child: Stack(
           alignment: Alignment.center,
           children: [
             Flex(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              direction: Axis.horizontal,
               children: List.generate(count, (_) {
                 return SizedBox(
                   width: 10.0,
@@ -44,8 +50,6 @@ class ProgressTracker extends StatelessWidget {
                   ),
                 );
               }),
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              direction: Axis.horizontal,
             ),
             Positioned(
               top: 0,
