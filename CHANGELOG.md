@@ -1,3 +1,7 @@
+## [0.0.6] - 2024-02-22
+
+* Added comments in Quick Example
+
 ## [0.0.5] - 2024-02-22
 
 * Update Quick Example
