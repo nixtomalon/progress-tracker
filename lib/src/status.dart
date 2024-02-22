@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class Status {
   final String name;
   final IconData icon;
-  bool? isActiveStatus;
+  bool? active;
 
   Status({
     required this.name,
     required this.icon,
-    this.isActiveStatus = false,
+    this.active = false,
   });
 }
