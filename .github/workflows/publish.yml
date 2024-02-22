@@ -1,27 +1,29 @@
+name: Publish Package
+
 on:
-  release:
+  push:
     branches:
-      - master
+      - main
+    paths:
+      - CHANGELOG.md
+
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
+    environment: pub.dev
+    outputs:
+      success: ${{ steps.package.outputs.success }}
+      version: ${{ steps.package.outputs.localVersion }}
     steps:
-      - uses: actions/checkout@v3
-      - name: Install Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-      - name: Install dependencies
-        run: flutter pub get
-      - name: Analyze
-        run: flutter analyze
-      - name: Format code
-        run: dart format --fix .
-      - name: Check Publish Warnings
-        run: dart pub publish --dry-run
-      - name: Publish
-        uses: k-paxian/dart-package-publisher@v1.5.1
-        with:
-          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
-          flutter: true
-          skipTests: true
+        - name: Checkout repository
+          uses: actions/checkout@v4
+        - name: Publish package
+          id: package
+          uses: k-paxian/dart-package-publisher@master
+          with:
+            accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
+            refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+            flutter: true
+            force: true
+            format: true
+            skipTests: true
