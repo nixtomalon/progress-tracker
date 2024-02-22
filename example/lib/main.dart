@@ -13,10 +13,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final List<ProgressStatus> progressStatuses = [
-    ProgressStatus(name: 'ORDER', icon: Icons.shopping_bag),
-    ProgressStatus(name: 'SHIP', icon: Icons.local_shipping),
-    ProgressStatus(name: 'DONE', icon: Icons.check_circle),
+  final List<Status> progressStatuses = [
+    Status(name: 'ORDER', icon: Icons.shopping_bag),
+    Status(name: 'SHIP', icon: Icons.local_shipping),
+    Status(name: 'DONE', icon: Icons.check_circle),
   ];
 
   int index = 0;
@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
               padding: const EdgeInsets.only(top: 16.0),
               child: ProgressTracker(
                 currentIndex: index,
-                progressStatuses: progressStatuses,
+                statusList: progressStatuses,
               ),
             ),
             const SizedBox(height: 20),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ProgressStatus {
+class Status {
   final String name;
   final IconData icon;
   bool? isActiveStatus;
 
-  ProgressStatus({
+  Status({
     required this.name,
     required this.icon,
     this.isActiveStatus = false,

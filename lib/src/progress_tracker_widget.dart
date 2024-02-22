@@ -3,22 +3,25 @@ import 'package:progress_tracker/src/status.dart';
 
 class ProgressTracker extends StatelessWidget {
   final int currentIndex;
-  final List<ProgressStatus> progressStatuses;
+  final List<Status> statusList;
   final Color? activeColor;
   final Color? inActiveColor;
 
   const ProgressTracker({
     super.key,
     required this.currentIndex,
-    required this.progressStatuses,
+    required this.statusList,
     this.activeColor = Colors.green,
     this.inActiveColor = Colors.grey,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (!progressStatuses[0].isActiveStatus!) {
-      progressStatuses[0].isActiveStatus = true;
+    for (int i = 0; i < statusList.length; i++) {
+      if (i == 0)
+        statusList[i].isActiveStatus = true;
+      else if (statusList[i].isActiveStatus!)
+        statusList[i].isActiveStatus = i <= currentIndex;
     }
 
     return LayoutBuilder(builder: (_, BoxConstraints box) {
@@ -51,8 +54,8 @@ class ProgressTracker extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List.generate(progressStatuses.length, (index) {
-                    return trackProgress(progressStatuses[index], index);
+                  children: List.generate(statusList.length, (index) {
+                    return trackProgress(statusList[index], index);
                   }),
                 ),
               ),
@@ -63,8 +66,9 @@ class ProgressTracker extends StatelessWidget {
     });
   }
 
-  Widget trackProgress(ProgressStatus status, int index) {
-    final statusCount = progressStatuses.length;
+  Widget trackProgress(Status status, int index) {
+    final statusCount = statusList.length;
+
     return Expanded(
       child: SizedBox(
         height: 82,
