@@ -26,14 +26,16 @@ User-friendly components for indicating status, completion, or progression in va
 **Open Source and Community-Driven**:
 Open source nature that encourages community contributions, fostering collaboration and improvement over time.
 
+## Showcase
+
 <img src="https://github.com/nixtomalon/progress_tracker/blob/main/assets/pt-sample.gif" width="260" />
 
-## How to use?
+## How to get started? 🤔
 
 **1.** Add the latest version of package to your pucspec.yaml:
 ```yaml
 dependencies:
-  progress_tracker: ^0.0.4
+  progress_tracker:
 ```
 **2.** Install packages from the comman line: 
 ```bash
@@ -44,31 +46,38 @@ $ flutter pub get
 import 'package:progress_tracker/progress_tracker.dart';
 ```
 
-## Example
+## How to use? 🤔
 
 ```dart
 import 'package:flutter/material.dart';
 import 'package:progress_tracker/progress_tracker.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ExampleProgressTracker());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class ExampleProgressTracker extends StatefulWidget {
+  const ExampleProgressTracker({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<ExampleProgressTracker> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  final List<ProgressStatus> progressStatuses = [
-    ProgressStatus(name: 'ORDER', icon: Icons.shopping_bag),
-    ProgressStatus(name: 'SHIP', icon: Icons.local_shipping),
-    ProgressStatus(name: 'DONE', icon: Icons.check_circle),
+class _MyAppState extends State<ExampleProgressTracker> {
+  final List<Status> statuList = [
+    Status(name: 'ORDER', icon: Icons.shopping_bag),
+    Status(name: 'SHIP', icon: Icons.local_shipping),
+    Status(name: 'DONE', icon: Icons.check_circle),
   ];
 
   int index = 0;
+
+  void onClickButton() {
+    setState(() {
+      index++;
+      statuList[index].active = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,19 +93,12 @@ class _MyAppState extends State<MyApp> {
               padding: const EdgeInsets.only(top: 16.0),
               child: ProgressTracker(
                 currentIndex: index,
-                progressStatuses: progressStatuses,
+                statusList: statuList,
               ),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: index == progressStatuses.length - 1
-                  ? null
-                  : () {
-                      setState(() {
-                        index++;
-                        progressStatuses[index].isActiveStatus = true;
-                      });
-                    },
+              onPressed: index != statuList.length - 1 ? onClickButton : null,
               child: const Text('NEXT'),
             )
           ],
@@ -106,3 +108,8 @@ class _MyAppState extends State<MyApp> {
   }
 }
 ```
+## Feedback 
+* Please raise an issue <a href = "https://github.com/nixtomalon/progress_tracker/issues">here</a>.
+
+## Contect me 📨
+<a href="https://github.com/nixtomalon"><img src= "https://img.icons8.com/ios-glyphs/344/github.png" width = "40px"/></a> <a href="https://www.linkedin.com/in/norman-tomalon/"><img src= "https://img.icons8.com/color/344/linkedin.png" width = "40px"/></a> <a href="mailto:nonixtomalon@gmail.com"><img src= "https://img.icons8.com/color/344/gmail-new.png" width = "40px"/></a>
