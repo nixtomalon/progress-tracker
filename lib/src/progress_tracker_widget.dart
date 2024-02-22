@@ -19,9 +19,8 @@ class ProgressTracker extends StatelessWidget {
   Widget build(BuildContext context) {
     for (int i = 0; i < statusList.length; i++) {
       if (i == 0)
-        statusList[i].isActiveStatus = true;
-      else if (statusList[i].isActiveStatus!)
-        statusList[i].isActiveStatus = i <= currentIndex;
+        statusList[i].active = true;
+      else if (statusList[i].active!) statusList[i].active = i <= currentIndex;
     }
 
     return LayoutBuilder(builder: (_, BoxConstraints box) {
@@ -80,32 +79,30 @@ class ProgressTracker extends StatelessWidget {
               child: Icon(
                 status.icon,
                 size: 26,
-                color: status.isActiveStatus! ? activeColor : inActiveColor,
+                color: status.active! ? activeColor : inActiveColor,
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Visibility(
-                  visible: status.isActiveStatus! && index < statusCount,
+                  visible: status.active! && index < statusCount,
                   child: Expanded(
                     child: Container(
                       height: 3.2,
                       decoration: BoxDecoration(
-                        color: status.isActiveStatus!
-                            ? activeColor
-                            : inActiveColor,
+                        color: status.active! ? activeColor : inActiveColor,
                       ),
                     ),
                   ),
                 ),
                 Icon(
                   Icons.circle,
-                  color: status.isActiveStatus! ? activeColor : inActiveColor,
+                  color: status.active! ? activeColor : inActiveColor,
                   size: 22,
                 ),
                 Visibility(
-                  visible: status.isActiveStatus! && index < statusCount,
+                  visible: status.active! && index < statusCount,
                   child: Expanded(
                     child: Container(
                       height: 3.2,
@@ -125,7 +122,7 @@ class ProgressTracker extends StatelessWidget {
               child: Text(
                 status.name,
                 style: TextStyle(
-                  color: status.isActiveStatus! ? activeColor : inActiveColor,
+                  color: status.active! ? activeColor : inActiveColor,
                 ),
               ),
             ),
