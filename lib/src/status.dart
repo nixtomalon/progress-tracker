@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Status {
   final String name;
-  final IconData icon;
+  final IconData? icon;
   bool? active;
 
   Status({
