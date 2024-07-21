@@ -25,6 +25,8 @@ class ProgressTracker extends StatelessWidget {
   /// Defaults to [Colors.grey] if not specified.
   final Color? inActiveColor;
 
+  final double height = 100;
+
   /// Creates a [ProgressTracker] widget.
   ///
   /// The [currentIndex] represents the currently active step in the progress tracker.
@@ -53,11 +55,11 @@ class ProgressTracker extends StatelessWidget {
     }
 
     return LayoutBuilder(builder: (_, BoxConstraints box) {
-      // Calculate the number of inactive steos based on the available width.
+      // Calculate the number of inactive steps based on the available width.
       final count = (box.constrainWidth() / (1.4 * 8.0)).floor();
 
       return SizedBox(
-        height: 82,
+        height: height,
         child: Stack(
           alignment: Alignment.center,
           children: [
@@ -103,7 +105,7 @@ class ProgressTracker extends StatelessWidget {
 
     return Expanded(
       child: SizedBox(
-        height: 82,
+        height: height,
         child: Stack(
           alignment: Alignment.center,
           children: [
