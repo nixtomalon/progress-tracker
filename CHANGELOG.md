@@ -1,3 +1,7 @@
+## [0.0.9] - 2024-07-21
+
+* Fix showcase file now showing properly
+
 ## [0.0.8] - 2024-07-21
 
 * Added empty icon support
