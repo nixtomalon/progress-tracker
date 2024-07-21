@@ -157,6 +157,7 @@ class ProgressTracker extends StatelessWidget {
               bottom: 0,
               child: Text(
                 status.name,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: status.active! ? activeColor : inActiveColor,
                 ),
