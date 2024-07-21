@@ -1,3 +1,8 @@
+## [0.0.8] - 2024-07-21
+
+* Added empty icon support
+* Support to other platform
+
 ## [0.0.7] - 2024-02-22
 
 * update License
