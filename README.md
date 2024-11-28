@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-<p align="center"><img src="https://imgur.com/a/SPSmf4d"></p>
+<p align="center"><img src="https://imgur.com/qmM4qpd.png"></p>
 
 
 <p align="center">A versatile and easy-to-use Flutter package for implementing progress tracking and status visualization in your applications.</p>
