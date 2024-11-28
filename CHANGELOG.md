@@ -1,3 +1,7 @@
+## [0.0.12] - 2024-11-29
+
+* Update readme file (banner image and workflow badge)
+
 ## [0.0.11] - 2024-11-29
 
 * Update readme file (banner image)

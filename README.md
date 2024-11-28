@@ -11,14 +11,14 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-<p align="center"><img src="https://imgur.com/qmM4qpd.png"></p>
+<p align="center"><img src="https://imgur.com/aIMs0ry.png"></p>
 
 
 <p align="center">A versatile and easy-to-use Flutter package for implementing progress tracking and status visualization in your applications.</p>
 
 <p align="center">
 <a href="https://pub.dev/packages/progress_tracker" target="_blank"><img src="https://img.shields.io/pub/v/progress_tracker" alt="Pub Version" /></a>
-<a href="https://github.com/nixtomalon/progress-tracker/actions?query=workflow%3Apublish" target="_blank"><img src="https://github.com/nixtomalon/progress-tracker/workflows/publish/badge.svg?event=push" alt="CI" /></a>
+<a href="https://github.com/nixtomalon/progress-tracker/actions?query=workflow%3Apublish" target="_blank"><img src="https://github.com/nixtomalon/progress-tracker/actions/workflows/publish.yml/badge.svg?event=push" alt="CI" /></a>
 <a href="https://pub.dev/packages/progress_tracker/score" target="_blank"><img src="https://img.shields.io/badge/dynamic/json?color=teal&label=popularity&query=popularity&url=http://www.pubscore.gq/popularity?package=progress_tracker" alt="popularity" /></a>
 <a href="https://github.com/nixtomalon/progress-tracker/stargazers" target="_blank"><img src="https://img.shields.io/github/stars/nixtomalon/progress-tracker" alt="GitHub stars" /></a>
 <a href="https://github.com/tenhobi/effective_dart" target="_blank"><img src="https://img.shields.io/badge/style-effective_dart-54C5F8.svg" alt="style: effective dart" /></a>
