@@ -1,3 +1,7 @@
+## [0.0.10] - 2024-11-29
+
+* Update readme file
+
 ## [0.0.9] - 2024-07-21
 
 * Fix showcase file now showing properly

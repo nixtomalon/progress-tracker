@@ -11,9 +11,20 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-## progress_tracker
+<p align="center"><img src="https://imgur.com/a/SPSmf4d"></p>
 
- A versatile and easy-to-use Flutter package for implementing progress tracking and status visualization in your applications.
+
+<p align="center">A versatile and easy-to-use Flutter package for implementing progress tracking and status visualization in your applications.</p>
+
+<p align="center">
+<a href="https://pub.dev/packages/progress_tracker" target="_blank"><img src="https://img.shields.io/pub/v/progress_tracker" alt="Pub Version" /></a>
+<a href="https://github.com/nixtomalon/progress-tracker/actions?query=workflow%3Apublish" target="_blank"><img src="https://github.com/nixtomalon/progress-tracker/workflows/publish/badge.svg?event=push" alt="CI" /></a>
+<a href="https://pub.dev/packages/progress_tracker/score" target="_blank"><img src="https://img.shields.io/badge/dynamic/json?color=teal&label=popularity&query=popularity&url=http://www.pubscore.gq/popularity?package=progress_tracker" alt="popularity" /></a>
+<a href="https://github.com/nixtomalon/progress-tracker/stargazers" target="_blank"><img src="https://img.shields.io/github/stars/nixtomalon/progress-tracker" alt="GitHub stars" /></a>
+<a href="https://github.com/tenhobi/effective_dart" target="_blank"><img src="https://img.shields.io/badge/style-effective_dart-54C5F8.svg" alt="style: effective dart" /></a>
+<a href="https://github.com/nixtomalon/progress-tracker/blob/main/LICENSE" target="_blank"><img src="https://img.shields.io/github/license/nixtomalon/progress-tracker" alt="GitHub license" /></a>
+<a href="https://github.com/nixtomalon/progress-tracker/commits/main" target="_blank"><img src="https://img.shields.io/github/last-commit/nixtomalon/progress-tracker" alt="GitHub last commit" /></a>
+</p>
 
 ## Features
 
@@ -37,7 +48,7 @@ Open source nature that encourages community contributions, fostering collaborat
 dependencies:
   progress_tracker:
 ```
-**2.** Install packages from the comman line: 
+**2.** Install packages from the comman line:
 ```bash
 $ flutter pub get
 ```
@@ -122,7 +133,7 @@ class _MyAppState extends State<ExampleProgressTracker> {
 }
 
 ```
-## Feedback 
+## Feedback
 * Please raise an issue <a href = "https://github.com/nixtomalon/progress_tracker/issues">here</a>.
 
 ## Contect me 📨
