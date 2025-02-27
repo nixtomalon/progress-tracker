@@ -1,3 +1,9 @@
+## [0.0.15] - 2025-02-27
+
+* Made the `icon` parameter in the `Status` class optional.
+* Allows progress tracker steps without requiring an icon.
+* Improved flexibility for cases where icons are not needed.
+
 ## [0.0.14] - 2025-02-27
 
 * Update readme file (example usage)

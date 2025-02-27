@@ -28,6 +28,15 @@ class ProgressTracker extends StatefulWidget {
   /// Determines whether the tracker should start with a tracker or a line.
   final bool trackerAtStart;
 
+  /// Determines whether only the active tracker should display an icon.
+  final bool showIconOnlyOnActive;
+
+  ///Determines whether the step number should be displayed inside the tracker.
+  final bool showStepNumber;
+
+  /// Specifies the icon to be displayed only on the active step.
+  final IconData iconOnlyOnActive;
+
   final double horizontalPadding;
   final double verticalPadding;
 
@@ -37,11 +46,15 @@ class ProgressTracker extends StatefulWidget {
   /// Creates a [ProgressTracker] widget.
   ///
   /// The [currentIndex] represents the currently active step in the progress tracker.
-  /// The [statusList] is a list of [Status] objects indicating the steps in the progress.
-  /// The [activeColor] and [inActiveColor] parameters define the colors for active and inactive elements.
-  /// The [height] determines the vertical size of the progress tracker.
+  /// The [statusList] is a list of [Status] objects that define each step, including a name, icon, and active state.
+  /// The [activeColor] and [inActiveColor] define the colors for active and inactive steps, respectively.
   /// The [trackerAtStart] controls whether the tracker appears before the progress line
   /// (Tracker → Line → Tracker) or after it (Line → Tracker → Line).
+  /// The [showIconOnlyOnActive] determines whether only the active tracker should display an icon.
+  /// The [showStepNumber] specifies whether the step number should be displayed inside the tracker.
+  /// The [iconOnlyOnActive] allows defining a specific icon that appears only on the active step.
+  /// The [horizontalPadding] and [verticalPadding] adjust the spacing around the progress tracker.
+  /// The [height] determines the vertical size of the progress tracker.
 
   const ProgressTracker({
     Key? key,
@@ -50,6 +63,9 @@ class ProgressTracker extends StatefulWidget {
     this.activeColor = Colors.green,
     this.inActiveColor = Colors.grey,
     this.trackerAtStart = true,
+    this.showIconOnlyOnActive = false,
+    this.showStepNumber = false,
+    this.iconOnlyOnActive = Icons.arrow_drop_down,
     this.horizontalPadding = 16.0,
     this.verticalPadding = 16.0,
     this.height = 100,
@@ -102,7 +118,7 @@ class _ProgressTrackerState extends State<ProgressTracker> {
                     height: 2.8,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: widget.inActiveColor,
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
@@ -173,28 +189,55 @@ class _ProgressTrackerState extends State<ProgressTracker> {
                 clipBehavior: Clip.none,
                 children: [
                   // Displays the step icon at the top of each tracker.
-                  Positioned(
-                    top: 0,
-                    left: index == 0 ? 0 : null,
-                    right: index == statuses.length - 1 ? 0 : null,
-                    child: Icon(
-                      statuses[index].icon,
-                      size: 26,
-                      color: statuses[index].active!
-                          ? widget.activeColor
-                          : widget.inActiveColor,
+                  Visibility(
+                    visible: !widget.showIconOnlyOnActive,
+                    child: Positioned(
+                      top: 0,
+                      left: index == 0 ? 0 : null,
+                      right: index == statuses.length - 1 ? 0 : null,
+                      child: Icon(
+                        statuses[index].icon,
+                        size: 26,
+                        color: statuses[index].active!
+                            ? widget.activeColor
+                            : widget.inActiveColor,
+                      ),
+                    ),
+                  ),
+                  Visibility(
+                    visible: widget.showIconOnlyOnActive &&
+                        index == widget.currentIndex,
+                    child: Positioned(
+                      top: 0,
+                      child: Icon(
+                        size: 30,
+                        widget.iconOnlyOnActive,
+                        color: statuses[index].active!
+                            ? widget.activeColor
+                            : widget.inActiveColor,
+                      ),
                     ),
                   ),
                   // Displays the circular progress tracker.
                   Container(
-                    height: 20,
-                    width: 20,
+                    padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: statuses[index].active!
                           ? widget.activeColor
                           : widget.inActiveColor,
                       shape: BoxShape.circle,
                     ),
+                    child: widget.showStepNumber
+                        ? Center(
+                            child: Text(
+                            (index + 1).toString(),
+                            style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                          ))
+                        : null,
                   ),
                   // Displays the label below the tracker.
                   Positioned(
@@ -233,13 +276,31 @@ class _ProgressTrackerState extends State<ProgressTracker> {
           alignment: Alignment.center,
           children: [
             // Display the icon representing the step.
-            Positioned(
-              top: 0,
-              child: Icon(
-                status.icon,
-                size: 26,
-                color:
-                    status.active! ? widget.activeColor : widget.inActiveColor,
+            Visibility(
+              visible: !widget.showIconOnlyOnActive,
+              child: Positioned(
+                top: 0,
+                child: Icon(
+                  status.icon,
+                  size: 26,
+                  color: status.active!
+                      ? widget.activeColor
+                      : widget.inActiveColor,
+                ),
+              ),
+            ),
+            Visibility(
+              visible:
+                  widget.showIconOnlyOnActive && index == widget.currentIndex,
+              child: Positioned(
+                top: 0,
+                child: Icon(
+                  size: 30,
+                  widget.iconOnlyOnActive,
+                  color: statuses[index].active!
+                      ? widget.activeColor
+                      : widget.inActiveColor,
+                ),
               ),
             ),
             // Display visual indicators for the step's status.
@@ -260,14 +321,24 @@ class _ProgressTrackerState extends State<ProgressTracker> {
                   ),
                 ),
                 Container(
-                  height: 20,
-                  width: 20,
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: statuses[index].active!
                         ? widget.activeColor
                         : widget.inActiveColor,
                     shape: BoxShape.circle,
                   ),
+                  child: widget.showStepNumber
+                      ? Center(
+                          child: Text(
+                          (index + 1).toString(),
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ))
+                      : null,
                 ),
                 Visibility(
                   visible: status.active! && index < statusCount,
