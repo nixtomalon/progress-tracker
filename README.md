@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-<p align="center"><img src="https://imgur.com/aIMs0ry.png"></p>
+<p align="center"><img src="https://imgur.com/a/progress-tracker-uYT8OlF"></p>
 
 
 <p align="center">A versatile and easy-to-use Flutter package for implementing progress tracking and status visualization in your applications.</p>
@@ -136,5 +136,5 @@ class _MyAppState extends State<ExampleProgressTracker> {
 ## Feedback
 * Please raise an issue <a href = "https://github.com/nixtomalon/progress_tracker/issues">here</a>.
 
-## Contect me 📨
+## Contact me 📨
 <a href="https://github.com/nixtomalon"><img src= "https://img.icons8.com/ios-glyphs/344/github.png" width = "40px"/></a> <a href="https://www.linkedin.com/in/norman-tomalon/"><img src= "https://img.icons8.com/color/344/linkedin.png" width = "40px"/></a> <a href="mailto:nonixtomalon@gmail.com"><img src= "https://img.icons8.com/color/344/gmail-new.png" width = "40px"/></a>
