@@ -39,7 +39,7 @@ Open source nature that encourages community contributions, fostering collaborat
 
 ## Showcase
 
-<img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-1.gif" width="280" /><img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-2.gif" width="280" />
+<img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-1.gif" width="280" />    <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-2.gif" width="280" />
 
 ## How to get started? 🤔
 
