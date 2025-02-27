@@ -1,3 +1,8 @@
+## [0.0.14] - 2025-02-27
+
+* Update readme file (example usage)
+* Added option to position tracker at the start and end of the line
+
 ## [0.0.13] - 2025-02-27
 
 * Update readme file (package logo)

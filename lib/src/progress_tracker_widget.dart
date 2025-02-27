@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progress_tracker/src/status.dart';
 
-class ProgressTracker extends StatelessWidget {
+class ProgressTracker extends StatefulWidget {
   /// The index representing the currently active step in the progress tracker.
   ///
   /// It determines which step is currently highlighted or marked as completed.
@@ -25,13 +25,23 @@ class ProgressTracker extends StatelessWidget {
   /// Defaults to [Colors.grey] if not specified.
   final Color? inActiveColor;
 
-  final double height = 100;
+  /// Determines whether the tracker should start with a tracker or a line.
+  final bool trackerAtStart;
+
+  final double horizontalPadding;
+  final double verticalPadding;
+
+  /// Height of the progress tracker.
+  final double height;
 
   /// Creates a [ProgressTracker] widget.
   ///
   /// The [currentIndex] represents the currently active step in the progress tracker.
   /// The [statusList] is a list of [Status] objects indicating the steps in the progress.
   /// The [activeColor] and [inActiveColor] parameters define the colors for active and inactive elements.
+  /// The [height] determines the vertical size of the progress tracker.
+  /// The [trackerAtStart] controls whether the tracker appears before the progress line
+  /// (Tracker → Line → Tracker) or after it (Line → Tracker → Line).
 
   const ProgressTracker({
     Key? key,
@@ -39,73 +49,186 @@ class ProgressTracker extends StatelessWidget {
     required this.statusList,
     this.activeColor = Colors.green,
     this.inActiveColor = Colors.grey,
+    this.trackerAtStart = true,
+    this.horizontalPadding = 16.0,
+    this.verticalPadding = 16.0,
+    this.height = 100,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    // Ensure that the first element is active by default.
-    for (int i = 0; i < statusList.length; i++) {
-      if (i == 0) {
-        statusList[i].active = true;
-      } else {
-        if (statusList[i].active!) {
-          statusList[i].active = i <= currentIndex;
-        }
-      }
-    }
+  State<ProgressTracker> createState() => _ProgressTrackerState();
+}
 
+class _ProgressTrackerState extends State<ProgressTracker> {
+  late List<Status> statuses;
+
+  @override
+  void initState() {
+    super.initState();
+    _updateStatusList(); // Set initial active states
+  }
+
+  /// Updates the active states of each step based on the current index.
+  void _updateStatusList() {
+    statuses = List.from(widget.statusList);
+    for (int i = 0; i < statuses.length; i++) {
+      statuses[i].active = i == 0 || i <= widget.currentIndex;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return LayoutBuilder(builder: (_, BoxConstraints box) {
       // Calculate the number of inactive steps based on the available width.
       final count = (box.constrainWidth() / (1.4 * 8.0)).floor();
 
-      return SizedBox(
-        height: height,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            // Display horizontal lines between steps.
-            Flex(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              direction: Axis.horizontal,
-              children: List.generate(count, (_) {
-                return SizedBox(
-                  width: 10.0,
-                  height: 2.8,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(8),
+      return Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: widget.horizontalPadding,
+          vertical: widget.verticalPadding,
+        ),
+        child: SizedBox(
+          height: widget.height,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              // Display horizontal lines between steps.
+              Flex(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                direction: Axis.horizontal,
+                children: List.generate(count, (_) {
+                  return SizedBox(
+                    width: 10.0,
+                    height: 2.8,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  );
+                }),
+              ),
+              Visibility(
+                visible: !widget.trackerAtStart,
+                child: Positioned(
+                  top: 0,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: List.generate(statuses.length, (index) {
+                        return buildLineAtStart(statuses[index], index);
+                      }),
                     ),
                   ),
-                );
-              }),
-            ),
-            // Display the steps and their status indicators.
-            Positioned(
-              top: 0,
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List.generate(statusList.length, (index) {
-                    return trackProgress(statusList[index], index);
-                  }),
                 ),
               ),
-            ),
-          ],
+              Visibility(
+                visible: widget.trackerAtStart,
+                child: Positioned(
+                  top: 0,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width -
+                        widget.horizontalPadding * 2,
+                    child: buildTrackerAtStart(),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       );
     });
   }
 
-  /// Displays a single step in the progress tracker with its associated status.
-  Widget trackProgress(Status status, int index) {
-    final statusCount = statusList.length;
+  /// Builds the progress tracker when the `trackerAtStart` option is enabled.
+  ///
+  /// This function ensures the correct sequence of `Tracker > Line > Tracker > Line > Tracker`
+  Stack buildTrackerAtStart() {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        // Generates the progress lines connecting the trackers.
+        Row(
+          children: List.generate(statuses.length - 1, (index) {
+            return Expanded(
+              child: Container(
+                height: 3.2,
+                color: statuses[index + 1].active!
+                    ? widget.activeColor
+                    : Colors.transparent,
+              ),
+            );
+          }),
+        ),
+        // Generates the individual steps (icons, trackers, and labels).
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(statuses.length, (index) {
+            return SizedBox(
+              height: widget.height,
+              child: Stack(
+                alignment: Alignment.center,
+                clipBehavior: Clip.none,
+                children: [
+                  // Displays the step icon at the top of each tracker.
+                  Positioned(
+                    top: 0,
+                    left: index == 0 ? 0 : null,
+                    right: index == statuses.length - 1 ? 0 : null,
+                    child: Icon(
+                      statuses[index].icon,
+                      size: 26,
+                      color: statuses[index].active!
+                          ? widget.activeColor
+                          : widget.inActiveColor,
+                    ),
+                  ),
+                  // Displays the circular progress tracker.
+                  Container(
+                    height: 20,
+                    width: 20,
+                    decoration: BoxDecoration(
+                      color: statuses[index].active!
+                          ? widget.activeColor
+                          : widget.inActiveColor,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  // Displays the label below the tracker.
+                  Positioned(
+                    bottom: 0,
+                    left: index == 0 ? 0 : null,
+                    right: index == statuses.length - 1 ? 0 : null,
+                    child: Text(
+                      statuses[index].name,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: statuses[index].active!
+                            ? widget.activeColor
+                            : widget.inActiveColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }),
+        ),
+      ],
+    );
+  }
+
+  /// Builds a single step in the progress tracker when `trackerAtStart` is disabled.
+  ///
+  ////// This function ensures the correct sequence of `Line > Tracker > Line > Tracker Line`
+  Expanded buildLineAtStart(Status status, int index) {
+    final statusCount = statuses.length;
 
     return Expanded(
       child: SizedBox(
-        height: height,
+        height: widget.height,
         child: Stack(
           alignment: Alignment.center,
           children: [
@@ -115,12 +238,13 @@ class ProgressTracker extends StatelessWidget {
               child: Icon(
                 status.icon,
                 size: 26,
-                color: status.active! ? activeColor : inActiveColor,
+                color:
+                    status.active! ? widget.activeColor : widget.inActiveColor,
               ),
             ),
             // Display visual indicators for the step's status.
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Visibility(
                   visible: status.active! && index < statusCount,
@@ -128,15 +252,22 @@ class ProgressTracker extends StatelessWidget {
                     child: Container(
                       height: 3.2,
                       decoration: BoxDecoration(
-                        color: status.active! ? activeColor : inActiveColor,
+                        color: status.active!
+                            ? widget.activeColor
+                            : widget.inActiveColor,
                       ),
                     ),
                   ),
                 ),
-                Icon(
-                  Icons.circle,
-                  color: status.active! ? activeColor : inActiveColor,
-                  size: 22,
+                Container(
+                  height: 20,
+                  width: 20,
+                  decoration: BoxDecoration(
+                    color: statuses[index].active!
+                        ? widget.activeColor
+                        : widget.inActiveColor,
+                    shape: BoxShape.circle,
+                  ),
                 ),
                 Visibility(
                   visible: status.active! && index < statusCount,
@@ -144,9 +275,9 @@ class ProgressTracker extends StatelessWidget {
                     child: Container(
                       height: 3.2,
                       decoration: BoxDecoration(
-                        color: currentIndex != index ||
-                                currentIndex + 1 == statusCount
-                            ? activeColor
+                        color: widget.currentIndex != index ||
+                                widget.currentIndex + 1 == statusCount
+                            ? widget.activeColor
                             : Colors.transparent,
                       ),
                     ),
@@ -161,7 +292,9 @@ class ProgressTracker extends StatelessWidget {
                 status.name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: status.active! ? activeColor : inActiveColor,
+                  color: status.active!
+                      ? widget.activeColor
+                      : widget.inActiveColor,
                 ),
               ),
             ),
