@@ -28,8 +28,8 @@ and the Flutter guide for
 
 ## 🚀 Features
 
-**✔️ Custom Step Indicators** – Use numbers or icons.
-**✔️ Adaptive Layout** – Adjusts based on screen size.
+**✔️ Custom Step Indicators** – Use numbers or icons. <br>
+**✔️ Adaptive Layout** – Adjusts based on screen size. <br>
 **✔️ Tracker Placement Option** – Choose whether the tracker appears first or the line appears first.
 
 
@@ -37,7 +37,7 @@ and the Flutter guide for
 
 | Feature 1 | Feature 2 | Feature 3 |
 |-----------|-----------|-----------|
-| <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-3.gif" width="260"/> | <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-2.gif" width="260"/> | <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-1.gif" width="260"/> |
+| <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-3.gif" width="246"/> | <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-2.gif" width="246"/> | <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-1.gif" width="246"/> |
 
 
 
