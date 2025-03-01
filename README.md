@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-<p align="center"><img src="https://imgur.com/w9GXfgH.png"></p>
+<p align="center"><img src="https://imgur.com/qAbFBpJ.png"></p>
 
 
 <p align="center">A versatile and easy-to-use Flutter package for implementing progress tracking and status visualization in your applications.</p>
@@ -26,22 +26,12 @@ and the Flutter guide for
 <a href="https://github.com/nixtomalon/progress-tracker/commits/main" target="_blank"><img src="https://img.shields.io/github/last-commit/nixtomalon/progress-tracker" alt="GitHub last commit" /></a>
 </p>
 
-## Features
+## Showcase ✅
 
-**Progress Tracking Widgets**:
-Easy-to-use widgets for visualizing and tracking progress within your Flutter application.
+| Feature 1 | Feature 2 | Feature 3 |
+|-----------|-----------|-----------|
+| <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-3.gif" width="260"/> | <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-2.gif" width="260"/> | <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-1.gif" width="260"/> |
 
-**User-Friendly Components**:
-User-friendly components for indicating status, completion, or progression in various scenarios.
-
-**Open Source and Community-Driven**:
-Open source nature that encourages community contributions, fostering collaboration and improvement over time.
-
-## Showcase
-
-<img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-1.gif" width="280" style="margin-right: 15px;" />
-<img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-2.gif" width="280" style="margin-right: 15px;" />
-<img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-3.gif" width="280" />
 
 
 ## How to get started? 🤔
@@ -51,7 +41,7 @@ Open source nature that encourages community contributions, fostering collaborat
 dependencies:
   progress_tracker:
 ```
-**2.** Install packages from the comman line:
+**2.** Install packages from the command line:
 ```bash
 $ flutter pub get
 ```
