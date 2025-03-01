@@ -26,103 +26,61 @@ and the Flutter guide for
 <a href="https://github.com/nixtomalon/progress-tracker/commits/main" target="_blank"><img src="https://img.shields.io/github/last-commit/nixtomalon/progress-tracker" alt="GitHub last commit" /></a>
 </p>
 
-## Showcase ✅
+## 🚀 Features
+
+**✔️ Custom Step Indicators**:
+Easy-to-use widgets for visualizing and tracking progress within your Flutter application.
+**✔️ Adaptive Layout**– Adjusts based on screen size.
+**✔️ Tracker Placement Option**– Choose whether the tracker appears first or the line appears first.
+
+## 🎥Showcase
 
 | Feature 1 | Feature 2 | Feature 3 |
 |-----------|-----------|-----------|
-| <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-3.gif" width="246"/> | <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-2.gif" width="246"/> | <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-1.gif" width="246"/> |
+| <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-3.gif" width="260"/> | <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-2.gif" width="260"/> | <img src="https://github.com/nixtomalon/progress_tracker/raw/main/assets/pt-sample-1.gif" width="260"/> |
 
 
 
-## How to get started? 🤔
+##📦 Installatioin
 
-**1.** Add the latest version of package to your pucspec.yaml:
-```yaml
-dependencies:
-  progress_tracker:
-```
-**2.** Install packages from the command line:
 ```bash
-$ flutter pub get
-```
-**3.** Import the package and use it in your Flutter App.
-```dart
-import 'package:progress_tracker/progress_tracker.dart';
+$ flutter pub add progress_tracker
 ```
 
-## How to use? 🤔
+##🛠️ Usage🤔
 
 ```dart
-import 'package:flutter/material.dart';
-import 'package:progress_tracker/progress_tracker.dart';
-
-void main() {
-  runApp(const ExampleProgressTracker());
-}
-
-class ExampleProgressTracker extends StatefulWidget {
-  const ExampleProgressTracker({super.key});
-
-  @override
-  State<ExampleProgressTracker> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<ExampleProgressTracker> {
-  // List of Status objects representing the steps or statuses in the progress tracker.
-  // Each Status object includes a name, icon, and an optional 'active' parameter to indicate its current status.
-  // The 'name' field represents the label or title of the status.
-  // The 'icon' field is the IconData representing the visual representation of the status.
-  // The 'active' field, when set to true, indicates that the status is currently active or completed.
-
-  final List<Status> statuList = [
-    Status(name: 'SHIPPED', icon: Icons.shopping_bag),
-    Status(name: 'Out for Delivery', icon: Icons.local_shipping),
-    Status(name: 'Delivered', icon: Icons.check_circle),
-  ];
-
-  // The index representing the currently active step in the progress tracker.
-  // It determines which step is currently highlighted or marked as completed.
-
-  int index = 0;
-
-  void nextButton() {
-    setState(() {
-      index++;
-      statuList[index].active = true;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Example Progress Tracker'),
-        ),
-        body: Column(
-          children: [
-            ProgressTracker(
-              trackerAtStart: false,
-              currentIndex: index,
-              statusList: statuList,
-              activeColor: Colors.green,
-              inActiveColor: Colors.grey,
-              horizontalPadding: 16,
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: index != statuList.length - 1 ? nextButton : null,
-              child: const Text('NEXT'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
+ProgressTracker(
+  currentIndex: 2, // Active step
+  statusList: [
+    Status(name: "Processed", icon: Icons.check),
+    Status(name: "Shipped", icon: Icons.local_shipping),
+    Status(name: "Enroute", icon: Icons.directions_car),
+    Status(name: "Arrived", icon: Icons.home),
+  ],
+);
 ```
+
+##🎨 Customization
+
+##✅ Customize Step Number & Colors
+```dart
+ProgressTracker(
+  showStepNumber: false, // Hide step numbers
+  activeColor: Colors.blue, // Customize active color
+);
+```
+##✅ Choose Tracker Placement (Tracker First or Line First)
+```dart
+ProgressTracker(
+  trackerAtStart: true,  // Tracker → Line → Tracker
+);
+
+ProgressTracker(
+  trackerAtStart: false, // Line → Tracker → Line
+);
+```
+
 ## Feedback
 * Please raise an issue <a href = "https://github.com/nixtomalon/progress_tracker/issues">here</a>.
 
