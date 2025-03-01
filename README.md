@@ -28,12 +28,12 @@ and the Flutter guide for
 
 ## 🚀 Features
 
-**✔️ Custom Step Indicators**:
-Easy-to-use widgets for visualizing and tracking progress within your Flutter application.
-**✔️ Adaptive Layout**– Adjusts based on screen size.
-**✔️ Tracker Placement Option**– Choose whether the tracker appears first or the line appears first.
+**✔️ Custom Step Indicators** – Use numbers or icons.
+**✔️ Adaptive Layout** – Adjusts based on screen size.
+**✔️ Tracker Placement Option** – Choose whether the tracker appears first or the line appears first.
 
-## 🎥Showcase
+
+## 🎥 Showcase
 
 | Feature 1 | Feature 2 | Feature 3 |
 |-----------|-----------|-----------|
@@ -41,13 +41,13 @@ Easy-to-use widgets for visualizing and tracking progress within your Flutter ap
 
 
 
-##📦 Installatioin
+## 📦 Installatioin
 
 ```bash
 $ flutter pub add progress_tracker
 ```
 
-##🛠️ Usage🤔
+## 🛠️ Usage🤔
 
 ```dart
 ProgressTracker(
@@ -61,16 +61,16 @@ ProgressTracker(
 );
 ```
 
-##🎨 Customization
+## 🎨 Customization
 
-##✅ Customize Step Number & Colors
+## ✅ Customize Step Number & Colors
 ```dart
 ProgressTracker(
   showStepNumber: false, // Hide step numbers
   activeColor: Colors.blue, // Customize active color
 );
 ```
-##✅ Choose Tracker Placement (Tracker First or Line First)
+## ✅ Choose Tracker Placement (Tracker First or Line First)
 ```dart
 ProgressTracker(
   trackerAtStart: true,  // Tracker → Line → Tracker
