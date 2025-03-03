@@ -41,13 +41,13 @@ and the Flutter guide for
 
 
 
-## 📦 Installatioin
+## 📦 Installation
 
 ```bash
 $ flutter pub add progress_tracker
 ```
 
-## 🛠️ Usage🤔
+## 🛠️ Usage
 
 ```dart
 ProgressTracker(
