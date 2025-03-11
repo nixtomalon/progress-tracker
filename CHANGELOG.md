@@ -1,3 +1,7 @@
+## [0.0.16] - 2025-03-11
+
+* Simplify the readme
+
 ## [0.0.15] - 2025-02-27
 
 * Made the `icon` parameter in the `Status` class optional.
